@@ -2,8 +2,8 @@ package com.example.testtask.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +11,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.testtask.R;
-import com.example.testtask.YouTubePlayerActivity;
+import com.example.testtask.RecyclerViewPosition;
+import com.example.testtask.activity.YouTubePlayerActivity;
+import com.example.testtask.data.FirstPlayListTable;
 import com.example.testtask.model.Example;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     ArrayList<Example> mList;
     Context context;
+    private List<FirstPlayListTable> firstPlayListTableList; // Cached copy of words
 
-    public MyAdapter(ArrayList<Example> mList, Context context) {
+    private static RecyclerViewPosition mRecyclerViewPosition;
+
+    public MyAdapter(ArrayList<Example> mList, Context context,RecyclerViewPosition recyclerViewPosition) {
         this.mList = mList;
         this.context = context;
+        mRecyclerViewPosition = recyclerViewPosition;
     }
 
     @NonNull
@@ -41,9 +48,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 .into(myViewHolder.image);
 
         myViewHolder.name.setText(example.getSnippet().getTitle());
-        if (example.getSnippet().getDescription() != null && example.getSnippet().getDescription().length() > 35) {
+        if (example.getSnippet().getDescription() != null && example.getSnippet().getDescription().length() > 120) {
             myViewHolder.description.setText(example.getSnippet().getDescription().substring(0, 120).concat("..."));
         }
+    }
+
+    public void setWords(ArrayList<Example> list) {
+       this.mList = list;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -76,6 +88,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public void onClick(View v) {
 
             Example example = mList.get(getAdapterPosition());
+            mRecyclerViewPosition.recyclerViewPosition(example);
             Intent intent = new Intent(context, YouTubePlayerActivity.class);
             intent.putExtra(YouTubePlayerActivity.VIDEO_ID, example.getSnippet().getResourceId().getVideoId());
             context.startActivity(intent);

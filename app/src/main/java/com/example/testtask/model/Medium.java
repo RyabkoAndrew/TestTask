@@ -15,9 +15,9 @@ public class Medium {
     @Expose
     private Integer height;
 
-    public Medium(String url) {
-        this.url = url;
-    }
+//    public Medium(String url) {
+//        this.url = url;
+//    }
 
     public String getUrl() {
         return url;

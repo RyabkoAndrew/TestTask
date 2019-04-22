@@ -12,11 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".YouTubePlayerActivity"
-            android:screenOrientation="landscape"></activity>
-        <activity android:name=".FirstPlayList"></activity>
+        <activity android:name=".activity.ThirdPlayListActivity"
+            android:parentActivityName=".activity.MainActivity"></activity>
+        <activity android:name=".activity.SecondPlayListActivity"
+            android:parentActivityName=".activity.MainActivity"/>
+        <activity android:name=".activity.YouTubePlayerActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".activity.FirstPlayListActivity"
+            android:parentActivityName=".activity.MainActivity"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

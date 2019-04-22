@@ -8,4 +8,11 @@
     <string name="action_settings">Settings</string>
 
     <string name="player_error">Error initializing YouTube player: %s</string>
+
+    
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hillsong_play_list">Hillsong Play list</string>
+    <string name="svati">Сваты 3 сезон</string>
+    <string name="top_50_songs">Top 50 songs</string>
+    <string name="refresh">Refresh</string>
 </resources>

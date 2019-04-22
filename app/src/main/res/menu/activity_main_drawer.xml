@@ -6,13 +6,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_play_list_first"
-            android:title="Play List 1" />
+            android:title="@string/hillsong_play_list" />
         <item
             android:id="@+id/nav_play_list_two"
-            android:title="Play List 2" />
+            android:title="@string/svati" />
         <item
             android:id="@+id/nav_playlist_three"
-            android:title="Play List 3" />
+            android:title="@string/top_50_songs" />
 
     </group>
 
